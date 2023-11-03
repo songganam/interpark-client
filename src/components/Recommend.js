@@ -1,12 +1,19 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Swiper, SwiperSlide } from "swiper/react";
+
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+
 import "../styles/recommend.css";
 import "../styles/common.css";
 import { useRef } from "react";
 
 function Recommend() {
   // js 코드 자리
+  // JSX 의 요소를 React 에서 참조
   const swiperRef = useRef();
+
   return (
     <section class="recommend">
       <div class="recommend-inner">
@@ -46,6 +53,14 @@ function Recommend() {
               slidesPerView={4}
               spaceBetween={27}
               slidesPerGroup={4}
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+              }}
+              modules={[Navigation]}
+              navigation={{
+                nextEl: ".recommend-slide-wrap .slide-next-bt",
+                prevEl: ".recommend-slide-wrap .slide-prev-bt",
+              }}
               className="recommend-slide"
             >
               <SwiperSlide>
@@ -398,20 +413,10 @@ function Recommend() {
               </SwiperSlide>
             </Swiper>
 
-            <button
-              class="slide-prev-bt"
-              onClick={() => {
-                swiperRef.current.slidePrev();
-              }}
-            >
+            <button class="slide-prev-bt">
               <img src="images/slider_arrow.svg" alt="" />
             </button>
-            <button
-              class="slide-next-bt"
-              onClick={() => {
-                swiperRef.current.slideNext();
-              }}
-            >
+            <button class="slide-next-bt">
               <img src="images/slider_arrow.svg" alt="" />
             </button>
           </div>

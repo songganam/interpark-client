@@ -129,7 +129,7 @@
 .recommend-good-info-price {
   position: relative;
   height: 10.6rem;
-  
+
   /* 1줄 말줄임 */
   overflow: hidden;
   font-size: 1.8rem;
@@ -149,11 +149,12 @@
   font-size: 2rem;
   font-weight: 700;
   color: normal;
+  font-style: normal;
 }
 .recommend-good-info-desc {
   position: relative;
   display: -webkit-box;
-  
+
   /* 2줄 이상 말줄임 */
   overflow: hidden;
   font-size: 1.5rem;
