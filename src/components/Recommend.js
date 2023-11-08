@@ -1,4 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+
+import { BtCate } from "../components/ui/buttons";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { Navigation } from "swiper/modules";
@@ -9,6 +11,8 @@ import "../styles/recommend.css";
 import "../styles/common.css";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import styled from "@emotion/styled";
+import { InnerArea, SectionTag } from "./layout/layout";
 
 function Recommend() {
   // js 코드 자리
@@ -40,7 +44,6 @@ function Recommend() {
   };
 
   // 외부 데이터 연동하기 (fetch 이용)
-
   const getJsonData = () => {
     fetch("recommend.json")
       .then((response) => {
@@ -80,12 +83,12 @@ function Recommend() {
   useEffect(() => {
     // 외부 데이터 불러들이기
     axiosJsonData();
-    //getJsonData();
+    // getJsonData();
   }, []);
 
   return (
-    <section className="recommend">
-      <div className="recommend-inner">
+    <SectionTag pt={0} pb={90}>
+      <InnerArea>
         <div className="recommend-header">
           <h2 className="recommend-title">쇼핑추천</h2>
           <span className="recommend-txt">
@@ -97,18 +100,16 @@ function Recommend() {
           <div className="recommend-category">
             <ul className="recommend-list">
               <li>
-                <button className="recommend-cate-bt recommend-cate-bt-active">
-                  쎈딜
-                </button>
+                <BtCate active={true}>쎈딜</BtCate>
               </li>
               <li>
-                <button className="recommend-cate-bt">베스트</button>
+                <BtCate>베스트</BtCate>
               </li>
               <li>
-                <button className="recommend-cate-bt">블프데이</button>
+                <BtCate>블프데이</BtCate>
               </li>
               <li>
-                <button className="recommend-cate-bt">디지털프라자</button>
+                <BtCate>디지털프라자</BtCate>
               </li>
               <li>
                 <a href="#" className="recommend-cate-bt">
@@ -139,7 +140,7 @@ function Recommend() {
                       <a href={item.url}>바로가기</a>
                     ) : (
                       <div className="recommend-slide-item">
-                        <a href="item.url" className="recommend-link">
+                        <a href={item.url} className="recommend-link">
                           <div className="recommend-img">
                             <img src={item.image} alt={item.desc} />
                           </div>
@@ -176,8 +177,8 @@ function Recommend() {
         </div>
 
         <div className="recommend-footer"></div>
-      </div>
-    </section>
+      </InnerArea>
+    </SectionTag>
   );
 }
 export default Recommend;
